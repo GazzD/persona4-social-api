@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+  java_app:
+    container_name: java_app
+    image: gazzd/persona4-social-api:0.0.1
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://java_db:3306/persona_4_social
+        SPRING_DATASOURCE_USERNAME: vcardozof
+        SPRING_DATASOURCE_PASSWORD: 123456
+    depends_on:
+      - java_db
+
+  java_db:
+    container_name: java_db
+    image: mysql:8.0.34
+    ports:
+      - "3309:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: 123456
+        MYSQL_DATABASE: persona_4_social
+        MYSQL_USER: vcardozof
+        MYSQL_PASSWORD: 123456
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+    mysql_data:
+
+
+
+
+
+
+#spring.datasource.url=
+#spring.datasource.username=
+#spring.datasource.password=
+#spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+#spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.show-sql=true
