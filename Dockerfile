@@ -1,8 +1,6 @@
 # Utiliza una imagen base de Java
 FROM amazoncorretto:17
 
-#CMD ["java", "-jar", "app.jar"]
-
 # Copia el archivo JAR de tu aplicación al contenedor
 COPY target/persona4-social-api-0.0.1-SNAPSHOT.jar app.jar
 
